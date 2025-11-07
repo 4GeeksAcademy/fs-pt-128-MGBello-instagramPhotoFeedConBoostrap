@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Photo Feed con Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel=" stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+</head>
+
+<body>
+    <!--Cuenta con 12 imagenes en lugar de las 9 que muesta el ejercicio ya que en la vista de dos columnas para dispositivos más pequeños se veiha feo una solo al final de la página-->
+    <!--Inicio del Navegador, con modal y dropdown-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fa-brands fa-instagram"></i>
+                Instagram
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <div class="d-flex justify-content-center">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success btn-sm m-1" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Create a new post
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create a new post</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="textArea"> Caption:</label>
+                                    <div class="form-floating mt-1">
+                                        <textarea class="form-control" placeholder="Leave a comment here"
+                                            id="floatingTextarea"></textarea>
+                                        <div class="d-flex">
+                                            <button class="btn btn-ligth m-1">
+                                                <i class="fa-solid fa-camera"></i>
+                                            </button>
+                                            <button class="btn btn-ligth m-1">
+                                                <i class="fa-solid fa-location-dot"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-success btn-sm">Publish</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Dorpdown-->
+                    <form class="btn-group">
+                        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle m-1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Accesibility</a></li>
+                            <li><a class="dropdown-item" href="#">Privacy and Data</a></li>
+                            <li><a class="dropdown-item text-danger border-top" href="#">Log out</a></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--Nav Tab para cambio de vista de las imagenes, mosaico o publicación-->
+    <div class="container">
+        <ul class="nav nav-tabs border-0 justify-content-center" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active border-0" id="grid-tab" data-bs-toggle="tab" data-bs-target="#imgGrid"
+                    type="button" role="tab" aria-controls="grid" aria-selected="true">
+                    <i class="fa-solid fa-border-all"></i></a>
+            </li>
+            <li class="nav-item border-0" role="presentation">
+                <button class="nav-link border-0" id="list-tab" data-bs-toggle="tab" data-bs-target="#imgList"
+                    type="button" role="tab" aria-controls="list" aria-selected="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <!--Contenedor/Div para contener las dos vistas que proporciona el Tab-->
+    <div class="tab-content">
+        <!--Vista en mosaico-->
+        <div class="tab-pane fade show active" id="imgGrid" role="tabpanel" aria-labelledby="grid-tab">
+            <div class="row m-1 m-md-1 m-ms-1">
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://i.ytimg.com/vi/VmfLN-9aHRM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCybfihnhvmA8wYhcS2ALZs4sSTgA"
+                            alt="GolMessiFalta" class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://www.mondosonoro.com/wp-content/uploads/2016/03/bloc-party-promo.jpg"
+                            alt="BlocParty" class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://espadasymas.com/cdn/shop/articles/1366_2000.jpg?v=1701361229&width=1500"
+                            alt="KimetsuNoYaiba" class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://carnovo.com/wp-content/uploads/2024/09/peugeot-208-2025.jpg" alt="Peugeot208"
+                            class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://storage.googleapis.com/pod_public/1300/268992.jpg" alt="SoloLeveling"
+                            class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://pics.filmaffinity.com/From_Serie_de_TV-265636059-large.jpg" alt="From"
+                            class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2014/11/406746-cine-superheroes-critica-capitan-america-primer-vengador.jpg?tf=3840x"
+                            alt="CapitanAmerica" class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://www.cnet.com/a/img/resize/1e47b8df7dc77c2ed8a8622b01c2622e1c41ea0e/hub/2023/08/21/c3af5f24-67f2-4331-b5dd-2d1ece131915/asus-rog-strix-g15-2022-4476.jpg?auto=webp&fit=crop&height=900&width=1200"
+                            alt="AsusRogStrix" class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://estaticos-cdn.prensaiberica.es/clip/330bc29c-7fe8-4c8a-8215-07bbaa3a9da9_16-9-discover-aspect-ratio_default_0.jpg"
+                            alt="LamineYamal" class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://frikanime.com/wp-content/uploads/2025/06/Krillin-Dragon-Ball-History-Box-2.jpg"
+                            alt="Krillin" class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://cdn.somoskudasai.com/image/d6fa6f8ec5227eb2f6dc9943ca1e75cf/1280x720/1-5.jpg"
+                            alt="Asta" class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-ms-12 mx-auto p-2">
+                    <div class="ratio ratio-1x1">
+                        <img src="https://thumbs.dreamstime.com/b/c%C3%B3digo-fuente-de-programaci%C3%B3n-equipo-tecnolog%C3%ADa-moderna-aplicaci%C3%B3n-codificaci%C3%B3n-por-desarrollador-programadores-software-en-241804713.jpg"
+                            alt="Codigo" class="object-fit-cover w-100 h-100 p-0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Vista en forma de tarjeta o publicación individual que cuenta con las doce imagenes de la vista en mosaico-->
+        <div class="tab-pane fade" id="imgList" role="tabpanel" aria-labelledby="list-tab">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center mx-auto">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">Gol de Messi a Liverpool de Falta</h5>
+                            <p class="m-1">15/10</p>
+                        </div>
+                        <img src="https://i.ytimg.com/vi/VmfLN-9aHRM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCybfihnhvmA8wYhcS2ALZs4sSTgA"
+                            class="card-img-top rounded-0" alt="GolMessi">
+                        <div class="card-body">
+                            <p class="fw-bolder">1000 Likes</p>
+                            <p class="card-text">Gol de Messi en la ida de semifinal de Champions League de falta contra
+                                el Liverpool</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center  mx-auto p-2">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">Bloc Party!! </h5>
+                            <p class="m-1">13/10</p>
+                        </div>
+                        <img src="https://www.mondosonoro.com/wp-content/uploads/2016/03/bloc-party-promo.jpg"
+                            class="card-img-top rounded-0" alt="blockParty">
+                        <div class="card-body">
+                            <p class="fw-bolder">300 Likes</p>
+                            <p class="card-text">Foto para promoción de disco nuevo de Bloc Party</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center mx-auto p-2">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">KimetsuNoYaiba</h5>
+                            <p class="m-1">09/10</p>
+                        </div>
+
+                        <img src="https://espadasymas.com/cdn/shop/articles/1366_2000.jpg?v=1701361229&width=1500"
+                            class="card-img-top rounded-0" alt="SoloLeveling">
+                        <div class="card-body">
+                            <p class="fw-bolder">382 Likes</p>
+                            <p class="card-text">Tanjiro Kamada, haciendo una respiracion del Dios del Fuego (o
+                                respiracion del sol) junto a sus compañeros</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center mx-auto p-2">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">Peugeot 208 GT</h5>
+                            <p class="m-1">07/10</p>
+                        </div>
+
+                        <img src="https://carnovo.com/wp-content/uploads/2024/09/peugeot-208-2025.jpg"
+                            class="card-img-top rounded-0" alt="Peugeot 208">
+                        <div class="card-body">
+                            <p class="fw-bolder">504 Likes</p>
+                            <p class="card-text">Aun teniendo algun problema mecánico Peugeot a reinventado el iconico
+                                208 en su forma más deportiva</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center mx-auto p-2">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">Solo Leveling</h5>
+                            <p class="m-1">05/10</p>
+                        </div>
+
+                        <img src="https://storage.googleapis.com/pod_public/1300/268992.jpg"
+                            class="card-img-top rounded-0" alt="SoloLeveling">
+                        <div class="card-body">
+                            <p class="fw-bolder">382 Likes</p>
+                            <p class="card-text">Thomas Andre protagonista de solo Leveling, uno de mis mangas
+                                favoritos, junto con su ejercito nigromante</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center mx-auto p-2">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">FROM</h5>
+                            <p class="m-1">03/10</p>
+                        </div>
+
+                        <img src="https://pics.filmaffinity.com/From_Serie_de_TV-265636059-large.jpg"
+                            class="card-img-top rounded-0" alt="From">
+                        <div class="card-body">
+                            <p class="fw-bolder">382 Likes</p>
+                            <p class="card-text">Enigmatica serie de HBO, en la que hay un constante sin sentido</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center mx-auto p-2">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">Captain América</h5>
+                            <p class="m-1">01/10</p>
+                        </div>
+
+                        <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2014/11/406746-cine-superheroes-critica-capitan-america-primer-vengador.jpg?tf=3840x"
+                            class="card-img-top rounded-0" alt="Capitan América">
+                        <div class="card-body">
+                            <p class="fw-bolder">1060 Likes</p>
+                            <p class="card-text">Primer vengador que renuncio al amor de su vida para poder salvar el
+                                mundo de Hydra!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center mx-auto p-2">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">Mi portátil</h5>
+                            <p class="m-1">30/09</p>
+                        </div>
+
+                        <img src="https://www.cnet.com/a/img/resize/1e47b8df7dc77c2ed8a8622b01c2622e1c41ea0e/hub/2023/08/21/c3af5f24-67f2-4331-b5dd-2d1ece131915/asus-rog-strix-g15-2022-4476.jpg?auto=webp&fit=crop&height=900&width=1200"
+                            class="card-img-top rounded-0" alt="AsusRog">
+                        <div class="card-body">
+                            <p class="fw-bolder">1240 Likes</p>
+                            <p class="card-text">Mi pórtatil personal, el cual esperemos que algun día se convierta en
+                                mi herramienta de diario para trabajar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center mx-auto p-2">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">Lamine Yamal</h5>
+                            <p class="m-1">28/09</p>
+                        </div>
+
+                        <img src="https://estaticos-cdn.prensaiberica.es/clip/330bc29c-7fe8-4c8a-8215-07bbaa3a9da9_16-9-discover-aspect-ratio_default_0.jpg"
+                            class="card-img-top rounded-0" alt="AsusRog">
+                        <div class="card-body">
+                            <p class="fw-bolder">1240 Likes</p>
+                            <p class="card-text">Lamine Yamal durante un la celebración de un gol en un partido de liga.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center mx-auto p-2">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">Krillin</h5>
+                            <p class="m-1">28/09</p>
+                        </div>
+
+                        <img src="https://frikanime.com/wp-content/uploads/2025/06/Krillin-Dragon-Ball-History-Box-2.jpg"
+                            class="card-img-top rounded-0" alt="AsusRog">
+                        <div class="card-body">
+                            <p class="fw-bolder">1240 Likes</p>
+                            <p class="card-text">Figura de Krilin la cual vigila mis manos cuando escribo código</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center mx-auto p-2">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">Asta</h5>
+                            <p class="m-1">28/09</p>
+                        </div>
+
+                        <img src="https://cdn.somoskudasai.com/image/d6fa6f8ec5227eb2f6dc9943ca1e75cf/1280x720/1-5.jpg"
+                            class="card-img-top rounded-0" alt="AsusRog">
+                        <div class="card-body">
+                            <p class="fw-bolder">1240 Likes</p>
+                            <p class="card-text">Protagonista principal del anime Black Clover, el cual es el único del
+                                reino del trebol sin mágia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center mx-auto p-2">
+                    <div class="card rounded-0" style="width: 30rem;">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title m-2">Código!!</h5>
+                            <p class="m-1">28/09</p>
+                        </div>
+
+                        <img src="https://thumbs.dreamstime.com/b/c%C3%B3digo-fuente-de-programaci%C3%B3n-equipo-tecnolog%C3%ADa-moderna-aplicaci%C3%B3n-codificaci%C3%B3n-por-desarrollador-programadores-software-en-241804713.jpg"
+                            class="card-img-top rounded-0" alt="AsusRog">
+                        <div class="card-body">
+                            <p class="fw-bolder">1240 Likes</p>
+                            <p class="card-text">Como me sentí con haciendo este proyecto, despues de tener 380 líneas
+                                de código</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Script de Funcionalidad Bootstrap5-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
